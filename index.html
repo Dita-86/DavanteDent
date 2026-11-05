@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DavanteDent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+<header class="cabecera">
+  <div class="cabecera-in">
+    <div class="marca">
+      <svg class="logo" viewBox="0 0 64 64" role="img" aria-label="Logo DavanteDent">
+      <circle cx="32" cy="32" r="30" fill="var(--azul-suave)"/>
+      <path d="M32 11c-5-3-14-2-17 5-2 5 0 10 2 15 2 6 2 16 6 18 3 1 4-5 5-9 1-3 2-5 4-5s3 2 4 5c1 4 2 10 5 9 4-2 4-12 6-18 2-5 4-10 2-15-3-7-12-8-17-5z" fill="#fff"/>
+      <path d="M24 30q8 8 16 0" fill="none" stroke="var(--naranja)" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="46" cy="14" r="5" fill="var(--naranja)"/>
+    </svg>
+      <div>
+        <h1>DavanteDent</h1>
+        <p class="lema">Gestión de citas de la clínica</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="zona-cita">
+  <section class="tarjeta">
+    <h2>Nueva cita</h2>
+
+    <form id="formCita" novalidate>
+      <input type="hidden" id="idCita" name="idCita">
+
+      <fieldset>
+        <legend>Fecha y hora</legend>
+        <div class="rejilla cinco">
+          <div class="campo"><label for="dia">Día</label><input type="text" id="dia" name="dia" inputmode="numeric"><span class="error" id="error-dia"></span></div>
+          <div class="campo"><label for="mes">Mes</label><input type="text" id="mes" name="mes" inputmode="numeric"><span class="error" id="error-mes"></span></div>
+          <div class="campo"><label for="anio">Año</label><input type="text" id="anio" name="anio" inputmode="numeric"><span class="error" id="error-anio"></span></div>
+          <div class="campo"><label for="hora">Hora</label><input type="text" id="hora" name="hora" inputmode="numeric"><span class="error" id="error-hora"></span></div>
+          <div class="campo"><label for="minuto">Minuto</label><input type="text" id="minuto" name="minuto" inputmode="numeric"><span class="error" id="error-minuto"></span></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Datos del paciente</legend>
+        <div class="rejilla tres">
+          <div class="campo"><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre"><span class="error" id="error-nombre"></span></div>
+          <div class="campo"><label for="apellidos">Apellidos</label><input type="text" id="apellidos" name="apellidos"><span class="error" id="error-apellidos"></span></div>
+          <div class="campo"><label for="dni">DNI</label><input type="text" id="dni" name="dni"><span class="error" id="error-dni"></span></div>
+          <div class="campo"><label for="telefono">Teléfono</label><input type="text" id="telefono" name="telefono" inputmode="tel"><span class="error" id="error-telefono"></span></div>
+          <div class="campo"><label for="email">Correo electrónico</label><input type="text" id="email" name="email"><span class="error" id="error-email"></span></div>
+          <div class="campo"><label for="nacimiento">Fecha de nacimiento</label><input type="date" id="nacimiento" name="nacimiento"><span class="error" id="error-nacimiento"></span></div>
+        </div>
+      </fieldset>
+
+      <div class="campo">
+        <label for="observaciones">Observaciones</label>
+        <textarea id="observaciones" name="observaciones" rows="3"></textarea>
+      </div>
+
+      <div class="botones">
+        <button type="submit" class="btn-principal">Guardar cita</button>
+        <button type="reset" class="btn-suave">Limpiar</button>
+      </div>
+    </form>
+  </section>
+
+  <aside class="calendario" aria-label="Calendario de citas">
+      <div class="cal-cab">
+        <button type="button" class="cal-nav" id="calAnterior" aria-label="Mes anterior">&#8249;</button>
+        <strong id="calTitulo"></strong>
+        <button type="button" class="cal-nav" id="calSiguiente" aria-label="Mes siguiente">&#8250;</button>
+      </div>
+      <div class="cal-semana"><span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+      <div class="cal-dias" id="calDias"></div>
+      <p class="cal-leyenda">Punto naranja = día con citas. Pulsa un día para rellenar la fecha.</p>
+    </aside>
+  </div>
+
+  <section class="tarjeta">
+    <h2>Citas programadas</h2>
+    <div class="tabla-caja">
+      <table id="tablaCitas">
+        <thead>
+          <tr>
+            <th>Nº</th><th>Fecha</th><th>Hora</th><th>Nombre</th><th>Apellidos</th><th>DNI</th>
+            <th>Teléfono</th><th>Email</th><th>Nacimiento</th><th>Observaciones</th><th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+          <tr id="filaVacia"><td colspan="11">dato vacío</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <p>DavanteDent · Calle Ejemplo 1, Sevilla · Tel. 955 000 000</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
